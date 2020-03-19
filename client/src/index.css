@@ -92,6 +92,20 @@ body {
   color: white;
 }
 
+.add-button {
+  position: absolute;
+  top: 30px;
+  right: 85px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: yellow;
+}
+.add-button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid gold;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
