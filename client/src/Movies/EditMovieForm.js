@@ -111,6 +111,7 @@ const EditMovieForm = ({ getMovieList, setMovieList }) => {
   const handleSubmit = e => {
     e.preventDefault();
     updateMovie(input);
+    setInput(initialState);
   };
 
   return (
