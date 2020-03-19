@@ -66,6 +66,19 @@ body {
   color: white;
 }
 
+.edit-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: dodgerblue;
+}
+.edit-button:hover {
+  background-color: blue;
+  color: white;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
