@@ -97,10 +97,10 @@ app.put("/api/movies/:id", (req, res) => {
 });
 
 app.delete("/api/movies/:id", (req, res) => {
-  if (!req.params.id)
+  if (!req.params.id || isNaN(req.params.id))
     res.status(400).send("Your request is missing the movie id");
   movies = movies.filter(movie => `${movie.id}` !== req.params.id);
-  res.status(202).send(req.params.id);
+  res.status(202).send(req.params);
 });
 
 app.get("/", function(req, res) {
