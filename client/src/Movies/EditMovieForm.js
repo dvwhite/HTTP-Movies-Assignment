@@ -70,7 +70,7 @@ const Input = styled.input`
   }
 `;
 
-const EditMovieForm = ({ setMovieList }) => {
+const EditMovieForm = ({ getMovieList, setMovieList }) => {
   const match = useRouteMatch();
   const initialState = { title: "", director: "", metascore: "", stars: [] };
   const [input, setInput] = useState(initialState);
@@ -84,18 +84,27 @@ const EditMovieForm = ({ setMovieList }) => {
 
   // Edit movie function
   const updateMovie = movie => {
+    // First, ask the API to update this movie and send back the updated movie object
     axios
       .put(`http://localhost:5000/api/movies/${id}`, { ...movie, id: id })
-      .then(res => {
-        setMovieList(res.data);
-        history.push(`/movies/${id}`)
-      })
-      .catch(err => console.log(err.response));
+      .then(singleMovieRes => {
+        // Work around the back-end not returning all movies on update
+        // Send another call to get all tickets in the API, then
+        // Replace existing ticket with this newly updated one
+        axios
+          .get("http://localhost:5000/api/movies")
+          .then(allMoviesRes => {
+            setMovieList([...allMoviesRes.data.filter(item => item.id !== movie.id), singleMovieRes.data]);
+            history.push(`/movies/${id}`);
+          })
+          .catch(err => console.log(err.response));
+      });
   };
-
+  
   const handleChange = e => {
     e.preventDefault();
-    const val = e.target.name === 'stars' ? e.target.value.split(",") : e.target.value;
+    const val =
+      e.target.name === "stars" ? e.target.value.split(",") : e.target.value;
     setInput({ ...input, [e.target.name]: val });
   };
 
