@@ -66,6 +66,46 @@ body {
   color: white;
 }
 
+.edit-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: dodgerblue;
+}
+.edit-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: 105px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: pink;
+}
+.delete-button:hover {
+  background-color: purple;
+  color: white;
+}
+
+.add-button {
+  position: absolute;
+  top: 30px;
+  right: 85px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: yellow;
+}
+.add-button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid gold;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -74,4 +114,9 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,9 +1,18 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 
 function SavedList({ list }) {
+  const history = useHistory();
+
+  const addMovie = () => {
+    history.push(`/add-movie`)
+  }
+
   return (
     <div className="saved-list">
+      <div className='add-button' onClick={addMovie}>
+        Add
+      </div>
       <h3>Saved Movies:</h3>
       {list.map(movie => {
         return (
